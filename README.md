@@ -1,6 +1,23 @@
 # 실전 추천시스템 알고리즘 이해와 구현
 
-2025 / 06 /16 ~ 06 / 18
+**교육기간**: 2025 / 06 /16 ~ 06 / 18
+
+| 일정   | 시간 | 내용                                 |
+|--------|------|--------------------------------------|
+| 1일차  | 오전 | 환경 구성                             |
+|        |      | MovieLens 데이터셋 소개               |
+|        |      | 초간단 추천 로직 만들기               |
+|        | 오후 | 추천 시스템 개론                      |
+|        |      | 콘텐츠 기반 추천                      |
+|        |      | 머신 러닝 I                           |
+| 2일차  | 오전 | 머신 러닝 II                          |
+|        |      | Matrix Factorization I - 1            |
+|        |      | Matrix Factorization I - 2            |
+|        | 오후 | Matrix Factorization II - 1           |
+|        |      | Matrix Factorization II - 2           |
+| 3일차  | 오전 | Matrix Factorization III - 1          |
+|        |      | Matrix Factorization III - 2          |
+|        | 오후 | Negative Sampling                     |
 
 ## 강사
 
