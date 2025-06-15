@@ -45,9 +45,6 @@ wsl --install --distribution Ubuntu
 ```
 
 .wslconfig 파일을 /user/student 폴더에 만듭니다.
-
-WSL 환경에서 메모리를 24GB, 프로세스를 6개 까지 사용할 수게 설정합니다.
-
 ```
 # Settings apply across all Linux distros running on WSL 2
 [wsl2]
@@ -67,7 +64,7 @@ WSL 구동
 ```cmd
 wsl -d Ubuntu
 ```
-사용자ID/암호 = rcmd/rcmd2025
+user account: rcmd/rcmd2025
 
 ```bash
 sudo apt update
@@ -80,66 +77,39 @@ lscpu
 free -h
 ```
 
-## Python 3.12.9 설치
+## Docker 설치
 
-- Linux 업데이트 확인
-- Linux 소프트웨어 개발 공용 도구 설치
-- Linux 빌드 도구 설치
-- Python 내부 구성 모듈 설치
-```bash
-sudo apt install software-properties-common
-sudo apt install build-essential
-sudo apt install gdb lcov pkg-config zlib1g-dev libncurses5-dev libgdbm-dev libnss3-dev libssl-dev libreadline-dev libffi-dev libsqlite3-dev wget libbz2-dev libgdbm-compat-dev liblzma-dev libreadline6-dev tk-dev uuid-dev
-```
+[Docker](https://www.docker.com/get-started/)에서 설치 프로그램을 다운로드 받습니다.
 
-- Python 소스 코드 설치
-- 압축해제
-- Python 소스 경로로 디렉커리 이동
-- 빌드 설정
-- 빌드
-- 설치: Linux에서는 Python이 설치가 되어 있습니다. Linux는 시스템 운영 프로그램에서 Python을 사용하므로 기본 Python을 교체해서는 안됩니다. altinstall로 설치합니다. 
-```
-wget https://www.python.org/ftp/python/3.12.9/Python-3.12.9.tar.xz
-tar -xvf Python-3.12.9.tar.xz
-cd Python-3.12.9
-./configure --enable-optimizations
-make -j 4
-sudo make altinstall
-```
-altinstall로 설치하면, /usr/local/bin에 python이 설치됩니다.
-현재 버젼의 Python으로 가상환경을 구성하여 사용하겠습니다.
+## Docker 이미지 다운로드
 
-- Home 디렉터리로 이동
-- Python3.12.9 가상환경 생성
-- Python3.12.9 가상환경 진입
-- Python 모듈 관리 프로그램 업그레이드
+[오라클 이미지](https://drive.google.com/file/d/1gjBAFlSTNfYWN4q5g-2pJ5LaTSkUNaT7/view?usp=drive_link)
+
+[Qdrant 이미지](https://drive.google.com/file/d/1nnvgbnBvZtrAubOTuAajQllvcSWccb5h/view?usp=drive_link)
+
+[실습환경 이미지](https://drive.google.com/file/d/1wZzDF3B2EYj5BpXIqBfE37UvZiILNw21/view?usp=drive_link)
+
+
+## 실습환경 구축
+
+**Docker 이미지 탑재**
+
+커멘드 창을 열고 docker 이미지가 있는 경로로 이동합니다.
+
+1. Oracle Image 탑재
+
 ```
-cd~
-/usr/local/bin/python3.12 -m venv python312
-source python312/bin/activate
-pip install --upgrade pip
-pip install --upgrade jupyterlab
+docker load -i oracle-rcmd.tar
 ```
 
-[데이터셋 & 모델](https://drive.google.com/drive/folders/1B2MWhhEjf1HChP85n9mp8Bp-UvqdvLLA)
+2. Qdrant Image 탑재
 
-## Docker 구동 및 이미지 만들기
-
-**이미지 빌드**
 ```
-docker build -t rcmd_2503 .
-```
-**이미지 저장**
-```
-docker save -o rcmd_2503.tar rcmd_2503
+docker load -i qdrant_rcmd.tar
 ```
 
-**이미지 불러오기**
-```
-docker load -i rcmd_2503.tar
-```
+3. 실습 환경 탑재
 
-**이미지 실행**
 ```
-docker run --gpus all --rm -p 8888:8888 rcmd_2503
+docker load -i multi_rcmd.tar
 ```
