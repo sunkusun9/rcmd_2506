@@ -8,7 +8,7 @@
 
 ## 기본 환경 구성
 
-Windows 10 / WSL Ubuntu(24.04) / Python 3.12.9
+Windows 10 / Docker powered by WSL Ubuntu(24.04)
 
 Window에서 가상 환경으로 Ubuntu를 구동 시켜서 진행합니다. 
 
@@ -26,7 +26,6 @@ Window에서 가상 환경으로 Ubuntu를 구동 시켜서 진행합니다.
 시스템 > 정보 > 고급 시스템 설정
 
 - NVIDIA 드라이버 업데이트
-
 
 강의장 PC 기준
 
@@ -78,7 +77,6 @@ free -h
 ```
 
 
-
 ## 실습환경 구축
 
 ### Docker 설치
@@ -114,3 +112,46 @@ docker load -i qdrant_rcmd.tar
 ```
 docker load -i multi_rcmd.tar
 ```
+
+4. 구동 파일 수정
+
+이 git에 run_rcmd.bat를 다운로드 받습니다.
+
+run_rcmd.bat는 실습 환경을 구동시키는 docker 명령이 들어 있습니다. 명령은 아래 와 같습니다. 
+
+```
+docker run --gpus all --rm -p 8888:8888 -v D:\work/lecture/rcmd_2506:/work --network rcmd -it multi_rcmd:latest  jupyter lab --ip=0.0.0.0 --port=8888 --allow-root --no-browser --notebook-dir=/work
+```
+
+이 경로를 실습 환경 내의 작업 경로를 로컬 PC에 해당 디렉터리로 바꾸어 줍니다.
+
+위 내용에서 D:\work/lecture/rcmd_2506 가 작업 파일의 경로입니다. 이 경로를 로컬 PC의 경로로 변경하고 저장합니다. 
+
+
+## 실습 환경 구동
+
+커맨드 창에서 실습 폴더로 이동합니다. 
+
+```cmd
+run_rcmd
+```
+위 커맨드를 실행시키면, 실습 환경 이미지가 실행이 됩니다.
+
+실습 환경은 Jupyter Lab 기반으로 되어 있습니다.
+
+## 컨텐츠 기반 추천용 DB 구동
+
+커맨드 창에서 실습 폴더로 이동합니다. 
+
+DB 시작
+```cmd
+docker compose up -d
+```
+
+DB 종료
+
+DB 종료시 DB에 기록된 내용들은 사라짐니다.
+```cmd
+docker compose down
+```
+
