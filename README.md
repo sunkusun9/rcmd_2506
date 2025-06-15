@@ -77,11 +77,15 @@ lscpu
 free -h
 ```
 
-## Docker 설치
+
+
+## 실습환경 구축
+
+### Docker 설치
 
 [Docker](https://www.docker.com/get-started/)에서 설치 프로그램을 다운로드 받습니다.
 
-## Docker 이미지 다운로드
+### Docker 이미지 다운로드
 
 [오라클 이미지](https://drive.google.com/file/d/1gjBAFlSTNfYWN4q5g-2pJ5LaTSkUNaT7/view?usp=drive_link)
 
@@ -89,10 +93,7 @@ free -h
 
 [실습환경 이미지](https://drive.google.com/file/d/1wZzDF3B2EYj5BpXIqBfE37UvZiILNw21/view?usp=drive_link)
 
-
-## 실습환경 구축
-
-**Docker 이미지 탑재**
+### Docker 이미지 탑재
 
 커멘드 창을 열고 docker 이미지가 있는 경로로 이동합니다.
 
